@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DEVI OS — Elegance. Speed. Clarity.</title>
+  <meta name="description" content="DEVI OS is a polished, student-friendly Linux distro focused on elegance, speed, and clarity." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-alt: #111111;
+      --text: #f5f5f7;
+      --muted: #a1a1a6;
+      --accent: #5cc8ff;
+      --accent-2: #a16eff;
+      --accent-3: #62f3aa;
+      --maxw: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Top global nav (Apple-style minimal) */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: saturate(180%) blur(16px);
+      background: rgba(10,10,10,0.6);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 48px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+
+    .brand .logo {
+      width: 22px;
+      height: 22px;
+      display: inline-block;
+      border-radius: 6px;
+      background:
+        conic-gradient(from 180deg at 50% 50%, var(--accent), var(--accent-2), var(--accent-3), var(--accent));
+      box-shadow: 0 0 20px rgba(92,200,255,0.35), inset 0 0 10px rgba(255,255,255,0.2);
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-ctas {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      font-size: 14px;
+      border-radius: 999px;
+      background: #1b1b1d;
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .btn.primary {
+      background: linear-gradient(180deg, #2c2c2f 0%, #1a1a1c 100%);
+      border-color: rgba(255,255,255,0.12);
+    }
+
+    .btn:hover {
+      filter: brightness(1.1);
+    }
+
+    .mobile-toggle {
+      display: none;
+      border: 0;
+      background: transparent;
+      color: var(--text);
+      font-size: 18px;
+      padding: 4px 8px;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 96px 20px 60px;
+      background:
+        radial-gradient(1200px 600px at 50% -100px, rgba(92,200,255,0.18), transparent 55%),
+        radial-gradient(1200px 600px at 0% 0%, rgba(161,110,255,0.12), transparent 50%),
+        radial-gradient(1200px 600px at 100% 0%, rgba(98,243,170,0.12), transparent 50%);
+    }
+
+    .hero-inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 1.05;
+      margin: 0 0 12px;
+      font-weight: 700;
+    }
+
+    .hero .sub {
+      font-size: clamp(16px, 2vw, 20px);
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .hero-note {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .hero-media {
+      position: relative;
+      border-radius: 18px;
+      background: linear-gradient(160deg, rgba(92,200,255,0.2) 0%, rgba(255,255,255,0.02) 45%, rgba(161,110,255,0.18) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.08);
+      overflow: hidden;
+    }
+
+    /* Placeholder screen */
+    .screen {
+      aspect-ratio: 16 / 10;
+      background: linear-gradient(180deg, #0f0f12 0%, #0b0b0d 100%);
+      position: relative;
+    }
+
+    .dock {
+      position: absolute;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      display: inline-flex;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .dock .icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      background: linear-gradient(180deg, #2c2c2f 0%, #1a1a1c 100%);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+
+    .statusbar {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .window {
+      position: absolute;
+      top: 58px;
+      left: 6%;
+      width: 88%;
+      height: 58%;
+      border-radius: 14px;
+      background: #111215;
+      border: 1px solid rgba(255,255,255,0.07);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      overflow: hidden;
+    }
+
+    .window-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: linear-gradient(180deg, #1b1c1f 0%, #141519 100%);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .traffic {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .traffic.red { background: #ff5f56; }
+    .traffic.yellow { background: #ffbd2e; }
+    .traffic.green { background: #27c93f; }
+
+    .window-body {
+      padding: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* Feature cards */
+    .section {
+      padding: 64px 20px;
+      background: var(--bg);
+    }
+
+    .section.alt {
+      background: var(--bg-alt);
+    }
+
+    .section-inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+    }
+
+    .section-header {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 24px;
+    }
+
+    .section h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      margin: 0;
+    }
+
+    .section p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      border-radius: 16px;
+      background: linear-gradient(180deg, #141416 0%, #101012 100%);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-height: 180px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .pip {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(92,200,255,0.8);
+    }
+
+    .card h3 {
+      margin: 6px 0 0;
+      font-size: 18px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* Promo band (Apple-like “shop the latest”) */
+    .promo {
+      margin-top: 36px;
+      border-radius: 16px;
+      background:
+        linear-gradient(160deg, rgba(92,200,255,0.12) 0%, rgba(255,255,255,0.02) 40%, rgba(161,110,255,0.18) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .promo p {
+      margin: 0;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* Screens showcase */
+    .screens {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .screen-card {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: #101012;
+    }
+
+    .screen-card .bar {
+      height: 38px;
+      background: linear-gradient(180deg, #1b1c1f 0%, #141519 100%);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+    }
+
+    .screen-card .img {
+      aspect-ratio: 16 / 9;
+      background:
+        linear-gradient(180deg, #131316 0%, #0f0f12 100%),
+        repeating-linear-gradient(90deg, rgba(92,200,255,0.06) 0px, rgba(92,200,255,0.06) 1px, transparent 1px, transparent 8px);
+      position: relative;
+    }
+
+    .caption {
+      padding: 12px 14px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    
+
+
+
+    /* Footer */
+    .footer {
+      padding: 40px 20px;
+      background: #0a0a0a;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 18px;
+    }
+
+    .footer h4 {
+      margin: 0 0 12px;
+      font-size: 14px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .footer a {
+      display: inline-block;
+      color: var(--text);
+      font-size: 14px;
+      margin: 6px 0;
+    }
+
+    .legal {
+      max-width: var(--maxw);
+      margin: 16px auto 0;
+      color: var(--muted);
+      font-size: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .nav-inner {
+        grid-template-columns: auto auto auto;
+      }
+      .nav-links {
+        display: none;
+      }
+      .mobile-toggle {
+        display: inline-block;
+      }
+      .hero-inner {
+        grid-template-columns: 1fr;
+        padding-top: 10px;
+      }
+      .section-header {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+      .screens {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+
+    /* Simple reveal animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Global navigation -->
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <span class="logo" aria-hidden="true"></span>
+        <span>DEVI OS</span>
+      </div>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#features">Features</a>
+        <a href="#screens">Screens</a>
+        <a href="#download">Download</a>
+        <a href="#community">Community</a>
+        <a href="#docs">Docs</a>
+      </nav>
+
+      <div class="nav-ctas">
+        <button class="mobile-toggle" aria-label="Open menu" id="menuToggle">☰</button>
+        <a class="btn" href="#docs">Docs</a>
+        <a class="btn primary" href="#download">Download</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy reveal">
+        <div class="eyebrow">Elegance. Speed. Clarity.</div>
+        <h1>Meet DEVI OS</h1>
+        <p class="sub">A polished Linux experience built for Developers and Engineers. Thoughtful defaults, blazing boot, and a desktop that feels yours from the first login.</p>
+
+        <div class="hero-ctas">
+          <a class="btn primary" href="#download">Get DEVI OS</a>
+          <a class="btn" href="#features">See what's new</a>
+        </div>
+        <p class="hero-note">Free and open-source. Crafted with care for learning, building, and sharing.</p>
+      </div>
+
+      <div class="hero-media reveal">
+        <div class="screen">
+          <div class="statusbar">
+            <div>DEVI • 10:24</div>
+            <div>Wi‑Fi • Battery • Sound</div>
+          </div>
+
+          <div class="window">
+            <div class="window-head">
+              <span class="traffic red"></span>
+              <span class="traffic yellow"></span>
+              <span class="traffic green"></span>
+              <span style="margin-left:8px;color:var(--muted);font-size:12px;">DEVI Settings</span>
+            </div>
+            <div class="window-body">
+              Welcome to DEVI OS — Developer's & Engineer's Virtual Integrated Operating System.
+              <br /><br />
+              Placeholder panel: Appearance • Dock • Keyboard • Network • About
+            </div>
+          </div>
+
+          <div class="dock" aria-label="Dock">
+            <div class="icon" title="Files"></div>
+            <div class="icon" title="Browser"></div>
+            <div class="icon" title="Terminal"></div>
+            <div class="icon" title="Editor"></div>
+            <div class="icon" title="Store"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section" id="features">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <h2>Designed for Developers & Engineers</h2><br>
+        <p>Carefully chosen defaults, subtle motion, and crisp typography make daily work feel calm. Under the hood: practical automation so installs are consistent across labs and VMs.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card reveal">
+          <div class="badge"><span class="pip"></span>Polished GNOME</div>
+          <h3>Branded, minimal, yours</h3>
+          <p>Clean GNOME shell CSS, tuned animations, and pre-set wallpapers give DEVI OS a distinct identity without bloat.</p>
+        </article>
+
+        <article class="card reveal">
+          <div class="badge"><span class="pip"></span>Fast boot</div>
+          <h3>Quick to the point</h3>
+          <p>Lean services and sensible defaults mean you get from power-on to productive in seconds, even on modest hardware.</p>
+        </article>
+
+        <article class="card reveal">
+          <div class="badge"><span class="pip"></span>Automation</div>
+          <h3>Reproducible installs</h3>
+          <p>Scripted post-install steps patch assets, theme, and login screens, ensuring every machine feels the same out of the box.</p>
+        </article>
+
+        <article class="card reveal">
+          <div class="badge"><span class="pip"></span>Student-first</div>
+          <h3>Clear guides</h3>
+          <p>Concise docs help new users learn Linux fundamentals while getting a polished daily-driver experience.</p>
+        </article>
+
+        <article class="card reveal">
+          <div class="badge"><span class="pip"></span>Creator tools</div>
+          <h3>Ready to build</h3>
+          <p>Preinstalled essentials for scripting, editing, and compiling — without locking you into a walled garden.</p>
+        </article>
+
+        <article class="card reveal">
+          <div class="badge"><span class="pip"></span>Community</div>
+          <h3>Open and welcoming</h3>
+          <p>A distro that encourages sharing, forking, and learning together. Your contributions shape the experience.</p>
+        </article>
+      </div>
+
+      <div class="promo reveal">
+        <p>Try DEVI OS in a VM — experience the branding, speed, and automation in minutes.</p>
+        <a class="btn primary" href="#download">Download ISO</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screens -->
+  <section class="section alt" id="screens">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <h2>Screens that feel effortless</h2>
+        <p>Smooth login, clean lock screen, and a dock that stays out of the way — all tuned with subtle depth and light.</p>
+      </div>
+
+      <div class="screens">
+        <div class="screen-card reveal">
+          <div class="bar">
+            <span class="traffic red"></span>
+            <span class="traffic yellow"></span>
+            <span class="traffic green"></span>
+            <span style="margin-left:8px;color:var(--muted);font-size:12px;">Login</span>
+          </div>
+          <div class="img" aria-label="Login screen mock"></div>
+          <div class="caption">Branded login with crisp typography and motion hints.</div>
+        </div>
+
+        <div class="screen-card reveal">
+          <div class="bar">
+            <span class="traffic red"></span>
+            <span class="traffic yellow"></span>
+            <span class="traffic green"></span>
+            <span style="margin-left:8px;color:var(--muted);font-size:12px;">Lock</span>
+          </div>
+          <div class="img" aria-label="Lock screen mock"></div>
+          <div class="caption">Lock screen keeps the wallpaper’s feel with subtle blur and contrast.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download + Community -->
+  <section class="section" id="download">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <h2>Get DEVI OS</h2><br>
+        <p>Start in a VM or install on hardware. Docs walk you through post-install scripts, branding, and safe rollbacks.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card reveal">
+          <div class="badge"><span class="pip"></span>ISO</div>
+          <h3>DEVI OS ISO</h3>
+          <p>Use with VirtualBox, VMware, or GNOME Boxes. Ideal for testing themes, scripts, and coursework setups.</p>
+          <div style="margin-top:auto">
+            <a class="btn primary" href="#">Download</a>
+            <span style="margin-left:10px;color:var(--muted);font-size:12px;">Checksum available</span>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="badge"><span class="pip"></span>Docs</div>
+          <h3>Guides & scripts</h3>
+          <p>Step-by-step branding automation, GNOME CSS patches, and asset packaging for reproducible installs.</p>
+          <div style="margin-top:auto">
+            <a class="btn" href="#docs">Read docs</a>
+          </div>
+        </article>
+
+        <article class="card reveal" id="community">
+          <div class="badge"><span class="pip"></span>Community</div>
+          <h3>Contribute</h3>
+          <p>Share themes, improve scripts, or help with translations. A distro built to empower learners.</p>
+          <div style="margin-top:auto">
+            <a class="btn" href="#">Join discussion</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="docs">
+    <div class="footer-inner">
+      <div>
+        <h4>DEVI OS</h4>
+        <p style="color:var(--muted);font-size:14px;line-height:1.7;">
+          A student-friendly Linux distro prioritizing clarity and reproducibility. Built for labs, classrooms, and makers.
+        </p>
+      </div>
+
+      <div>
+        <h4>Explore</h4>
+        <a href="#features">Features</a><br />
+        <a href="#screens">Screens</a><br />
+        <a href="#download">Download</a><br />
+        <a href="#community">Community</a>
+      </div>
+
+      <div>
+        <h4>Docs</h4>
+        <a href="#">Install guide</a><br />
+        <a href="#">Post-install scripts</a><br />
+        <a href="#">Branding & assets</a><br />
+        <a href="#">Safe rollback</a>
+      </div>
+
+      <div>
+        <h4>Follow</h4>
+        <a href="#">Git</a><br />
+        <a href="#">Chat</a><br />
+        <a href="#">Blog</a>
+      </div>
+    </div>
+
+    <div class="legal">
+      <span>© <span id="year"></span> DEVI OS. Free and open-source.</span>
+      
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu: clone primary links into a lightweight drawer
+    (function () {
+      const toggle = document.getElementById('menuToggle');
+      const nav = document.querySelector('.nav');
+      const links = document.querySelector('.nav-links')?.cloneNode(true);
+      let drawer;
+
+      function closeDrawer() {
+        drawer?.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      function createDrawer() {
+        drawer = document.createElement('div');
+        drawer.setAttribute('role', 'dialog');
+        drawer.setAttribute('aria-modal', 'true');
+        drawer.style.position = 'fixed';
+        drawer.style.inset = '0';
+        drawer.style.background = 'rgba(0,0,0,0.6)';
+        drawer.style.backdropFilter = 'blur(8px)';
+        drawer.style.zIndex = '999';
+        drawer.style.display = 'none';
+
+        const panel = document.createElement('div');
+        panel.style.position = 'absolute';
+        panel.style.right = '0';
+        panel.style.top = '0';
+        panel.style.width = '76%';
+        panel.style.maxWidth = '320px';
+        panel.style.height = '100%';
+        panel.style.background = '#0f0f12';
+        panel.style.borderLeft = '1px solid rgba(255,255,255,0.08)';
+        panel.style.padding = '16px';
+        panel.style.display = 'grid';
+        panel.style.gap = '8px';
+
+        const closeBtn = document.createElement('button');
+        closeBtn.textContent = 'Close';
+        closeBtn.className = 'btn';
+        closeBtn.style.justifySelf = 'end';
+        closeBtn.addEventListener('click', closeDrawer);
+
+        const cloned = links;
+        cloned.style.display = 'grid';
+        cloned.style.gap = '12px';
+        cloned.style.fontSize = '16px';
+
+        panel.appendChild(closeBtn);
+        panel.appendChild(cloned);
+        drawer.appendChild(panel);
+        document.body.appendChild(drawer);
+
+        drawer.addEventListener('click', (e) => {
+          if (e.target === drawer) closeDrawer();
+        });
+
+        drawer.classList.add('drawer');
+      }
+
+      toggle?.addEventListener('click', () => {
+        if (!drawer) createDrawer();
+        drawer.style.display = 'block';
+        requestAnimationFrame(() => drawer.classList.add('open'));
+        document.body.style.overflow = 'hidden';
+      });
+    })();
+
+    // Reveal on scroll
+    (function () {
+      const reveals = Array.from(document.querySelectorAll('.reveal'));
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.16 });
+
+      reveals.forEach((el) => io.observe(el));
+    })();
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
